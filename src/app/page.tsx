@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { campusOverview } from "@/lib/overview";
 import { Stat, Card } from "@/components/ui";
 import { TrendArea, SimpleBar } from "@/components/charts";
@@ -14,8 +15,15 @@ export default function Home() {
       <div className="mb-5">
         <h1 className="text-lg font-semibold text-slate-100">Campus Command Center</h1>
         <p className="text-sm text-muted mt-0.5">
-          8 buildings · 120 days (20 Jun – 17 Oct 2026) · fused IoT + smart-bin + manual telemetry
+          Synthetic benchmark · 8 buildings · 120 days (20 Jun – 17 Oct 2026) · IoT + smart-bin + manual telemetry
         </p>
+        <div className="mt-3 rounded-lg border border-accent/20 bg-accent/5 p-3 flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <p className="text-sm font-medium text-slate-100">New to the project?</p>
+            <p className="text-xs text-muted mt-1">Understand the problem, AI workflow, challenge mapping, and 2-minute judge walkthrough.</p>
+          </div>
+          <Link href="/project-guide" className="btn btn-accent">Open Project Guide →</Link>
+        </div>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
