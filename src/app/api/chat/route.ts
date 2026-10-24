@@ -3,8 +3,9 @@ import Groq from "groq-sdk";
 
 export const runtime = "nodejs";
 
-// Model: swap to "llama-3.1-8b-instant" for lower latency if desired.
-const MODEL = "llama-3.3-70b-versatile";
+// Model available on this Groq account. Swap to "openai/gpt-oss-20b" for
+// lower latency, or a Llama model if your account later gains access.
+const MODEL = "openai/gpt-oss-120b";
 
 const SYSTEM_PROMPT = `You are the "Campus Facilities Copilot" for a multi-building campus resource dashboard.
 You help facilities staff, wardens, technicians, and students understand:
