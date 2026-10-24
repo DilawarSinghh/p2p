@@ -7,6 +7,7 @@ import { useRole, ROLE_LABELS, PAGE_ROLES, type Role } from "@/lib/role-context"
 type NavItem = { href: string; label: string; icon: string | React.ReactNode };
 
 const NAV: NavItem[] = [
+  { href: "/project-guide", label: "Project Guide", icon: "◎" },
   { href: "/", label: "Command Center", icon: "◆" },
   { href: "/telemetry-fusion", label: "Sensor Fusion", icon: "⇄" },
   { href: "/edge-classifier", label: "Edge Classifier", icon: "♲" },
