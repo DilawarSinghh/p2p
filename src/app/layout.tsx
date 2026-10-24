@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Nav from "@/components/Nav";
+import ChatWidget from "@/components/ChatWidget";
 import { RoleProvider } from "@/lib/role-context";
 
 export const metadata: Metadata = {
@@ -21,6 +22,7 @@ export default function RootLayout({
             <Nav />
             <main className="flex-1 min-h-screen p-6 max-w-[1400px]">{children}</main>
           </div>
+          <ChatWidget />
         </RoleProvider>
       </body>
     </html>
