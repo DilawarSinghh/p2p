@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "seed": "node --loader tsx scripts/seed_supabase.ts"
+    "seed": "node scripts/seed_supabase.mjs",
+    "data:build": "python scripts/convert_data.py && python scripts/train_classifier.py"
   },
   "dependencies": {
     "@supabase/ssr": "^0.5.2",

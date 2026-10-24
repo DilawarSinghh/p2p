@@ -12,7 +12,7 @@ import pandas as pd
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 RAW = ROOT / "data" / "raw"
 CSV_DIR = ROOT / "data" / "csv"
-JSON_DIR = ROOT / "app-data" / "datasets"
+JSON_DIR = ROOT / "src" / "data" / "datasets"
 CSV_DIR.mkdir(parents=True, exist_ok=True)
 JSON_DIR.mkdir(parents=True, exist_ok=True)
 

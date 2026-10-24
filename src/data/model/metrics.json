@@ -122,7 +122,7 @@
       "accuracy_on_covered": 0.9194
     }
   ],
-  "sklearn_per_event_ms": 24.2436,
+  "sklearn_per_event_ms": 23.1874,
   "model": {
     "type": "RandomForest",
     "n_estimators": 140,

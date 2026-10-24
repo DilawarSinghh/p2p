@@ -30,20 +30,26 @@ begin
     'waste_events_train','waste_events_test','green_credits'
   ] loop
     execute format(
+      'drop policy if exists %I on public.%I;', t || '_read', t);
+    execute format(
       'create policy %I on public.%I for select to authenticated using (true);',
       t || '_read', t);
   end loop;
 end $$;
 
 -- profiles: a user can read/update only their own row.
+drop policy if exists profiles_self_read on public.profiles;
 create policy profiles_self_read on public.profiles
   for select to authenticated using (id = auth.uid());
+drop policy if exists profiles_self_upsert on public.profiles;
 create policy profiles_self_upsert on public.profiles
   for insert to authenticated with check (id = auth.uid());
+drop policy if exists profiles_self_update on public.profiles;
 create policy profiles_self_update on public.profiles
   for update to authenticated using (id = auth.uid());
 
 -- manual_logs: read for all authenticated.
+drop policy if exists manual_logs_read on public.manual_logs;
 create policy manual_logs_read on public.manual_logs
   for select to authenticated using (true);
 
@@ -51,6 +57,7 @@ create policy manual_logs_read on public.manual_logs
 --   admin       -> any building
 --   technician  -> any building (facility / sensor calibration)
 --   warden      -> only B05, B06, B07 (hostels + mess)
+drop policy if exists manual_logs_write on public.manual_logs;
 create policy manual_logs_write on public.manual_logs
   for insert to authenticated
   with check (
@@ -60,6 +67,7 @@ create policy manual_logs_write on public.manual_logs
   );
 
 -- admin may modify reference data / trigger config writes.
+drop policy if exists buildings_admin_write on public.buildings;
 create policy buildings_admin_write on public.buildings
   for all to authenticated
   using (public.current_role() = 'admin')

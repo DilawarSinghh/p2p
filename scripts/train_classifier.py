@@ -27,7 +27,7 @@ from sklearn.metrics import (accuracy_score, precision_recall_fscore_support,
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 RAW = ROOT / "data" / "raw"
-MODEL_DIR = ROOT / "app-data" / "model"
+MODEL_DIR = ROOT / "src" / "data" / "model"
 EXPORT_DIR = ROOT / "public" / "exports"
 MODEL_DIR.mkdir(parents=True, exist_ok=True)
 EXPORT_DIR.mkdir(parents=True, exist_ok=True)
@@ -120,9 +120,12 @@ def export_tree(tree):
         s = counts.sum()
         values.append([round(float(c / s), 5) for c in counts] if s > 0
                       else [0.0] * len(counts))
+    # sklearn stores +/-inf thresholds at leaf nodes; leaves are identified by
+    # feature == -2, so replace non-finite thresholds with 0 for valid JSON.
+    thr = [round(float(x), 4) if np.isfinite(x) else 0.0 for x in t.threshold.tolist()]
     return {
         "f": t.feature.tolist(),                              # feature idx, -2 = leaf
-        "t": [round(float(x), 4) for x in t.threshold.tolist()],
+        "t": thr,
         "l": t.children_left.tolist(),
         "r": t.children_right.tolist(),
         "v": values,                                          # per-class probabilities
