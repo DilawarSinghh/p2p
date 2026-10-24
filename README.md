@@ -26,10 +26,11 @@ A conventional dashboard can show *what happened*. It often does not tell a faci
 
 ## 2. What we built
 
-The product is a seven-page operations dashboard with an optional Supabase-backed deployment and a facilities Q&A copilot. The home screen is the entry point; each specialist page explains one part of the system.
+The product includes an interactive **Project Guide** for judges, seven core operations pages, a data-testing sandbox, an optional Supabase-backed deployment, and a facilities Q&A copilot. Start with `/project-guide` for the problem, solution, requirement-to-feature map, model metrics, limitations, and a suggested two-minute demo.
 
 | Page | What a judge can see | Why it matters |
 |---|---|---|
+| **Project Guide** — `/project-guide` | Plain-language problem and solution, links to each major feature, challenge mapping, model-metric caveats, and suggested judge walkthrough | Gives judges and first-time visitors the narrative before they explore the detailed dashboards |
 | **Campus Command Center** — `/` | Campus-wide electricity, energy cost, solar generation, water, CO₂ estimate, landfill, diversion rate, data-health counters, trends, and building comparison | Establishes the operational picture and highlights where attention may be needed |
 | **Telemetry Fusion** — `/telemetry-fusion` | IoT streams, smart-bin events, manual records, ingestion lag, buffered bursts, duplicates, and replay timeline | Demonstrates how the system reasons about asynchronous and delayed records |
 | **Edge Classifier** — `/edge-classifier` | Smart-bin sensor inputs, six predicted waste categories, confidence, routing destination, model metrics, and test predictions | Makes the model’s input, decision, and low-confidence handling visible |
@@ -37,6 +38,7 @@ The product is a seven-page operations dashboard with an optional Supabase-backe
 | **Root Cause** — `/root-cause` | Ranked anomalies, probable cause, supporting evidence, and recommended action with estimated impact | Helps staff investigate an issue instead of just viewing a chart |
 | **Circular & Incentives** — `/circular-incentives` | Green Scores, Green Credits, building leaderboard, composting/diversion metrics, and week-over-week changes | Connects operational performance with behaviour and circular-resource outcomes |
 | **Architecture & Scale** — `/architecture-scale` | Per-building hardware bill of materials, ROI/payback assumptions, scale simulator, and failure-mode monitors | Makes deployment assumptions, growth path, and known risks reviewable |
+| **Data Testing Sandbox** — `/data-validation` | Data-validation checks and sample test cases | Lets a reviewer inspect the data-quality testing workflow |
 
 The **Campus Facilities Copilot** is available through the chat widget. A **Demo Role Switcher** lets a presenter inspect role-specific views without a full sign-in flow. These demo controls should be understood as walkthrough aids; production access must be enforced by Supabase Auth and Row-Level Security.
 
@@ -186,7 +188,7 @@ npm install
 npm run dev
 ```
 
-Open **http://localhost:3000**. The default configuration uses bundled datasets. If needed, create `.env.local` from `.env.example` and keep:
+Open **http://localhost:3000**. The default configuration uses bundled datasets. For a guided overview, open **http://localhost:3000/project-guide** first. If needed, create `.env.local` from `.env.example` and keep:
 
 ```dotenv
 NEXT_PUBLIC_USE_LOCAL_DATA=true
@@ -229,7 +231,7 @@ The repository targets Vercel deployment; configure the required environment var
 ## 10. Repository map
 
 ```text
-src/app/                  Dashboard pages and API routes
+src/app/                  Project Guide, dashboard pages, sandbox, and API routes
 src/components/           Navigation, charts, chat, and reusable UI
 src/lib/                  Data access, metrics, classifier, forecast,
                           fusion, anomaly analysis, incentives, resilience
