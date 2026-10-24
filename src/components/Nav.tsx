@@ -1,9 +1,12 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { TestTube } from "lucide-react";
 import { useRole, ROLE_LABELS, PAGE_ROLES, type Role } from "@/lib/role-context";
 
-const NAV = [
+type NavItem = { href: string; label: string; icon: string | React.ReactNode };
+
+const NAV: NavItem[] = [
   { href: "/", label: "Command Center", icon: "◆" },
   { href: "/telemetry-fusion", label: "Sensor Fusion", icon: "⇄" },
   { href: "/edge-classifier", label: "Edge Classifier", icon: "♲" },
@@ -11,6 +14,7 @@ const NAV = [
   { href: "/root-cause", label: "Root Cause", icon: "⚑" },
   { href: "/circular-incentives", label: "Circular + Credits", icon: "♻" },
   { href: "/architecture-scale", label: "Scale + Resilience", icon: "⚙" },
+  { href: "/data-validation", label: "Data Testing Sandbox", icon: <TestTube size={15} /> },
 ];
 
 const ROLES: Role[] = ["admin", "warden", "technician", "student"];

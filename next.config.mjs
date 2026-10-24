@@ -13,6 +13,8 @@ const nextConfig = {
   outputFileTracingIncludes: {
     "/api/classify": ["./src/data/model/**"],
     "/api/classify-test": ["./src/data/model/**", "./src/data/datasets/waste_events_test.json"],
+    // verify-data reads the model (waste check) + hourly_streams (telemetry check).
+    "/api/verify-data": ["./src/data/model/**", "./src/data/datasets/hourly_streams.json"],
   },
 };
 

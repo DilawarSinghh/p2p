@@ -50,4 +50,5 @@ export const PAGE_ROLES: Record<string, Role[]> = {
   "/root-cause": ["admin", "warden", "technician"],
   "/circular-incentives": ["admin", "warden", "student"],
   "/architecture-scale": ["admin", "technician"],
+  "/data-validation": ["admin", "technician"],
 };
