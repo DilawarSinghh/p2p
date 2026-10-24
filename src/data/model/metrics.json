@@ -1,0 +1,139 @@
+{
+  "accuracy": 0.8489,
+  "gated_accuracy": 0.8677,
+  "confidence_gate": 0.5,
+  "eval_method": "5-fold stratified out-of-fold",
+  "n_samples": 6314,
+  "classes": [
+    "ewaste",
+    "food_organic",
+    "glass",
+    "metal",
+    "paper_cardboard",
+    "plastic"
+  ],
+  "per_class": {
+    "ewaste": {
+      "precision": 0.8516,
+      "recall": 0.6866,
+      "f1": 0.7603,
+      "support": 351
+    },
+    "food_organic": {
+      "precision": 0.9181,
+      "recall": 0.9136,
+      "f1": 0.9158,
+      "support": 1852
+    },
+    "glass": {
+      "precision": 0.7539,
+      "recall": 0.7469,
+      "f1": 0.7504,
+      "support": 320
+    },
+    "metal": {
+      "precision": 0.9029,
+      "recall": 0.9326,
+      "f1": 0.9175,
+      "support": 608
+    },
+    "paper_cardboard": {
+      "precision": 0.7496,
+      "recall": 0.8809,
+      "f1": 0.8099,
+      "support": 1461
+    },
+    "plastic": {
+      "precision": 0.8742,
+      "recall": 0.7747,
+      "f1": 0.8214,
+      "support": 1722
+    }
+  },
+  "confusion_matrix": [
+    [
+      241,
+      10,
+      11,
+      48,
+      17,
+      24
+    ],
+    [
+      8,
+      1692,
+      3,
+      1,
+      114,
+      34
+    ],
+    [
+      8,
+      7,
+      239,
+      5,
+      8,
+      53
+    ],
+    [
+      19,
+      5,
+      2,
+      567,
+      7,
+      8
+    ],
+    [
+      4,
+      94,
+      0,
+      3,
+      1287,
+      73
+    ],
+    [
+      3,
+      35,
+      62,
+      4,
+      284,
+      1334
+    ]
+  ],
+  "coverage_table": [
+    {
+      "threshold": 0.4,
+      "coverage": 0.9892,
+      "accuracy_on_covered": 0.8527
+    },
+    {
+      "threshold": 0.5,
+      "coverage": 0.9484,
+      "accuracy_on_covered": 0.8677
+    },
+    {
+      "threshold": 0.6,
+      "coverage": 0.8666,
+      "accuracy_on_covered": 0.8944
+    },
+    {
+      "threshold": 0.7,
+      "coverage": 0.7542,
+      "accuracy_on_covered": 0.9194
+    }
+  ],
+  "sklearn_per_event_ms": 24.2436,
+  "model": {
+    "type": "RandomForest",
+    "n_estimators": 140,
+    "max_depth": 14,
+    "min_samples_leaf": 4,
+    "features": [
+      "weight_g",
+      "moisture_pct",
+      "metal_signal",
+      "transparency",
+      "acoustic_hardness"
+    ]
+  }
+}

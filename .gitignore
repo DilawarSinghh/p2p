@@ -1,0 +1,33 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# next.js
+/.next/
+/out/
+next-env.d.ts
+
+# production
+/build
+
+# env files (keep .env.example)
+.env
+.env.local
+.env*.local
+
+# python
+.venv/
+__pycache__/
+*.pyc
+
+# data (raw source kept out of git; regenerate via scripts)
+/data/raw/*.xlsx
+
+# misc
+.DS_Store
+*.pem
+npm-debug.log*
+.vercel
+.idea
+.vscode
